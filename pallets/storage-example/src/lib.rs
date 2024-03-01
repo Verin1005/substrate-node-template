@@ -69,6 +69,7 @@ pub mod pallet {
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
 		#[pallet::weight(0)]
+		#[pallet::call_index(0)]
 		pub fn set_class_info(origin: OriginFor<T>, class: u32) -> DispatchResultWithPostInfo {
 			ensure_root(origin)?;
 
@@ -79,6 +80,7 @@ pub mod pallet {
 		}
 
 		#[pallet::weight(0)]
+		#[pallet::call_index(1)]
 		pub fn set_student_info(
 			origin: OriginFor<T>,
 			student_number: u32,
@@ -93,6 +95,7 @@ pub mod pallet {
 		}
 
 		#[pallet::weight(0)]
+		#[pallet::call_index(2)]
 		pub fn set_dorm_info(
 			origin: OriginFor<T>,
 			dorm_number: u32,
