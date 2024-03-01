@@ -2,6 +2,7 @@
 members = [
     "node",
     "pallets/template",
+    "pallets/storage-example",
     "runtime",
 ]
 resolver = "2"
