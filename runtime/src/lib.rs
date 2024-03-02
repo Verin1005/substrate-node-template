@@ -291,6 +291,13 @@ impl pallet_storage_provider::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type Value = u32;
 }
+
+impl pallet_use_other_pallet::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type Value = u32;
+	type MyStorage = StorageProvider; 
+	
+}
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub struct Runtime {
@@ -306,6 +313,7 @@ construct_runtime!(
 		SimplePallet: simple_pallet,
 		StorageExample: pallet_storage_example,
 		StorageProvider: pallet_storage_provider,
+		UseOtherPallet: pallet_use_other_pallet,
 	}
 );
 
