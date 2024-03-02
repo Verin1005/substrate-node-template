@@ -50,6 +50,7 @@ frame-system-benchmarking = { version = "4.0.0-dev", default-features = false, g
 # Local Dependencies
 pallet-template = { version = "4.0.0-dev", default-features = false, path = "../pallets/template" }
 simple-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/simple-pallet" }
+pallet-storage-provider={version="4.0.0-dev",default-features = false,path="../pallets/storage-provider"}
 
 
 pallet-storage-example = { version = "4.0.0-dev", default-features = false, path = "../pallets/storage-example" }
@@ -76,6 +77,7 @@ std = [
 	"pallet-template/std",
 	"simple-pallet/std",
 	"pallet-storage-example/std",
+	"pallet-storage-provider/std",
 	"pallet-timestamp/std",
 	"pallet-transaction-payment-rpc-runtime-api/std",
 	"pallet-transaction-payment/std",
