@@ -3,6 +3,7 @@ members = [
     "node",
     "pallets/template",
     "pallets/simple-pallet",
+    "pallets/storage-example",
     "runtime",
 ]
 resolver = "2"

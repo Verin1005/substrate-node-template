@@ -51,6 +51,8 @@ pub use pallet_template;
 
 /// import the simple pallet
 pub use simple_pallet;
+/// import the storage example pallet
+pub use pallet_storage_example;
 
 /// An index to a block.
 pub type BlockNumber = u32;
@@ -280,6 +282,11 @@ impl simple_pallet::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 }
 
+impl pallet_storage_example::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub struct Runtime {
@@ -293,6 +300,7 @@ construct_runtime!(
 		// Include the custom logic from the pallet-template in the runtime.
 		TemplateModule: pallet_template,
 		SimplePallet: simple_pallet,
+		StorageExample: pallet_storage_example,
 	}
 );
 
@@ -341,6 +349,7 @@ mod benches {
 		[pallet_timestamp, Timestamp]
 		[pallet_sudo, Sudo]
 		[pallet_template, TemplateModule]
+		[pallet_storage_example, StorageExample]
 	);
 }
 

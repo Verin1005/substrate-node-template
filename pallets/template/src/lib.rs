@@ -42,6 +42,18 @@ pub mod pallet {
 	// https://docs.substrate.io/main-docs/build/runtime-storage/#declaring-storage-items
 	pub type Something<T> = StorageValue<_, u32>;
 
+	 #[pallet::storage]
+  #[pallet::getter(fn dorm_info)]
+  pub type DormInfo<T: Config> = StorageDoubleMap<
+    _,
+    Blake2_128Concat,
+    u32, //dorm number
+    Blake2_128Concat,
+    u32, //bed number
+    u32, // student number
+    ValueQuery,
+  >;
+	
 	// Pallets use events to inform users when important changes are made.
 	// https://docs.substrate.io/main-docs/build/events-errors/
 	#[pallet::event]
@@ -90,7 +102,6 @@ pub mod pallet {
 		#[pallet::weight(T::WeightInfo::cause_error())]
 		pub fn cause_error(origin: OriginFor<T>) -> DispatchResult {
 			let _who = ensure_signed(origin)?;
-
 			// Read a value from storage.
 			match <Something<T>>::get() {
 				// Return an error if the value has not been set.
