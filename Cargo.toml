@@ -4,6 +4,7 @@ members = [
     "pallets/template",
     "pallets/simple-pallet",
     "pallets/storage-example",
+    "pallets/pallet-debug",
     "runtime",
 ]
 resolver = "2"
