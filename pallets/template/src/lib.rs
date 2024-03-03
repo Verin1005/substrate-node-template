@@ -42,18 +42,18 @@ pub mod pallet {
 	// https://docs.substrate.io/main-docs/build/runtime-storage/#declaring-storage-items
 	pub type Something<T> = StorageValue<_, u32>;
 
-	 #[pallet::storage]
-  #[pallet::getter(fn dorm_info)]
-  pub type DormInfo<T: Config> = StorageDoubleMap<
-    _,
-    Blake2_128Concat,
-    u32, //dorm number
-    Blake2_128Concat,
-    u32, //bed number
-    u32, // student number
-    ValueQuery,
-  >;
-	
+	#[pallet::storage]
+	#[pallet::getter(fn dorm_info)]
+	pub type DormInfo<T: Config> = StorageDoubleMap<
+		_,
+		Blake2_128Concat,
+		u32, //dorm number
+		Blake2_128Concat,
+		u32, //bed number
+		u32, // student number
+		ValueQuery,
+	>;
+
 	// Pallets use events to inform users when important changes are made.
 	// https://docs.substrate.io/main-docs/build/events-errors/
 	#[pallet::event]

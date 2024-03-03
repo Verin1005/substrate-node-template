@@ -5,13 +5,13 @@ pub use pallet::*;
 pub mod pallet {
 	use frame_support::pallet_prelude::*;
 	use frame_system::pallet_prelude::*;
-	// use sp_runtime::traits::Printable;
-	use sp_runtime::print;
+	// use frame_support::sp_runtime::traits::Printable;
+	use frame_support::sp_runtime::print;
 	use sp_std::if_std;
-
+	use log::{info};
 	#[pallet::config]
 	pub trait Config: frame_system::Config {
-		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
+		type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
 	}
 
 	#[pallet::pallet]
@@ -46,11 +46,13 @@ pub mod pallet {
 
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
-		#[pallet::weight(10_000 + T::DbWeight::get().writes(1))]
+
+		#[pallet::call_index(0)]
+		#[pallet::weight(0)]
 		pub fn do_something(origin: OriginFor<T>, something: u32) -> DispatchResult {
 			let who = ensure_signed(origin)?;
 			<Something<T>>::put(something);
-			log::info!("|||||||||||||||||||||| called by {:?}", who);
+			info!("|||||||||||||||||||||| called by {:?}", who);
 			print("After storing my_val");
 
 			if_std! {
@@ -63,9 +65,10 @@ pub mod pallet {
 			Ok(())
 		}
 
-		#[pallet::weight(10_000 + T::DbWeight::get().reads_writes(1,1))]
+		#[pallet::call_index(1)]
+		#[pallet::weight(0)]
 		pub fn cause_error(origin: OriginFor<T>) -> DispatchResult {
-			log::info!("|||||||||||||||||||||| cause error");
+			info!("|||||||||||||||||||||| cause error");
 			let _who = ensure_signed(origin)?;
 			match <Something<T>>::get() {
 				None => {
@@ -73,7 +76,7 @@ pub mod pallet {
 					Err(Error::<T>::NoneValue)?
 				},
 				Some(old) => {
-					log::info!("|||||||||||||||||||||| 2 error");
+					info!("|||||||||||||||||||||| 2 error");
 					let new = old.checked_add(1).ok_or({
 						// print(Error::<T>::StorageOverflow);
 						Error::<T>::StorageOverflow

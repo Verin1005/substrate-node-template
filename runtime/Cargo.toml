@@ -53,6 +53,7 @@ simple-pallet = { version = "4.0.0-dev", default-features = false, path = "../pa
 pallet-storage-provider={version="4.0.0-dev",default-features = false,path="../pallets/storage-provider"}
 pallet-storage-example = { version = "4.0.0-dev", default-features = false, path = "../pallets/storage-example" }
 pallet-use-other-pallet = { version = "4.0.0-dev", default-features = false, path = "../pallets/use-other-pallet" }
+pallet-debug = { version = "4.0.0-dev", default-features = false, path = "../pallets/pallet-debug" }
 [build-dependencies]
 substrate-wasm-builder = { version = "5.0.0-dev", git = "https://github.com/paritytech/substrate.git", optional = true , branch = "polkadot-v1.0.0" }
 
@@ -74,6 +75,7 @@ std = [
 	"pallet-grandpa/std",
 	"pallet-sudo/std",
 	"pallet-template/std",
+	"pallet-debug/std",
 	"simple-pallet/std",
 	"pallet-storage-example/std",
 	"pallet-storage-provider/std",

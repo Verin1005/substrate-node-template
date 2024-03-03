@@ -49,10 +49,10 @@ pub use sp_runtime::{Perbill, Permill};
 /// Import the template pallet.
 pub use pallet_template;
 
-/// import the simple pallet
-pub use simple_pallet;
 /// import the storage example pallet
 pub use pallet_storage_example;
+/// import the simple pallet
+pub use simple_pallet;
 
 /// An index to a block.
 pub type BlockNumber = u32;
@@ -284,7 +284,6 @@ impl simple_pallet::Config for Runtime {
 
 impl pallet_storage_example::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
-	
 }
 
 impl pallet_storage_provider::Config for Runtime {
@@ -295,8 +294,7 @@ impl pallet_storage_provider::Config for Runtime {
 impl pallet_use_other_pallet::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type Value = u32;
-	type MyStorage = StorageProvider; 
-	
+	type MyStorage = StorageProvider;
 }
 impl pallet_debug::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
